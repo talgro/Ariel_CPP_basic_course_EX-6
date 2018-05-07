@@ -13,12 +13,12 @@ using namespace std;
 class IllegalCoordinateException : public exception{
 
 private:
-    Index & _badIndex;
-    const char* _msg;
+    char* _msg;
 public:
     const char* what() const noexcept override;
     IllegalCoordinateException(Index& badIndex);
-    string theCoordinate() const;
+	~IllegalCoordinateException();
+    string theCoordinate() const noexcept;
 };
 
 #endif //INC_6_ILLEGALCOORDINATEEXCEPTION_HPP

@@ -4,13 +4,13 @@
 
 #include "Index.hpp"
 
-Index::Index(unsigned int row, unsigned int col)
+Index::Index(int row, int col)
     :   _col(col), _row(row) {}
 
-unsigned int Index::getCol() {
+int Index::getCol() {
     return _col;
 }
 
-unsigned int Index::getRow() {
+int Index::getRow() {
     return _row;
 }

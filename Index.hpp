@@ -8,12 +8,12 @@
 
 class Index {
 private:
-    unsigned int _row;
-    unsigned int _col;
+    int _row;
+    int _col;
 public:
-    Index(unsigned int row, unsigned int col);
-    unsigned int getRow();
-    unsigned int getCol();
+    Index(int row, int col);
+    int getRow();
+    int getCol();
 };
 
 

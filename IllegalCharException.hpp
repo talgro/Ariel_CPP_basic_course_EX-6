@@ -10,13 +10,12 @@ using namespace std;
 #include <string>
 #include "Index.hpp"
 
-class IllegalCharException : public exception{
+class IllegalCharException {
 
 private:
-    char _badChar;
+    string _badChar;
 public:
-    const char* what() const noexcept override;
-    IllegalCharException(char badChar);
+    IllegalCharException(string badChar);
     string theChar() const;
 };
 

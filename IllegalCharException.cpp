@@ -3,14 +3,12 @@
 //
 
 #include "IllegalCharException.hpp"
+#include <iostream>
 
-IllegalCharException::IllegalCharException(char badChar)
-    :   _badChar(badChar){}
-
-const char* IllegalCharException::what() const noexcept {
-    return &_badChar;
-}
+IllegalCharException::IllegalCharException(string badChar)
+	: _badChar(badChar) {}
 
 string IllegalCharException::theChar() const{
-    return what();
+
+	return _badChar;
 }

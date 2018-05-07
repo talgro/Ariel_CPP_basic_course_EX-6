@@ -11,62 +11,111 @@
 #include "IllegalCharException.hpp"
 
 Board::Board(int size)
-        : _size(size), _board(new vector<vector<SYMBOL>*>()){
+        : _size(size), _board(new vector<vector<Symbol>*>()){
     for (int innerVector = 0; innerVector < _size; ++innerVector) {
-        _board->push_back(new vector<SYMBOL>());
+        _board->push_back(new vector<Symbol>());
     }
-    for (vector<SYMBOL>* vec : *_board){
-        for (int symbolIndex = 0; symbolIndex < _size; ++symbolIndex){
-            vec->push_back(Board::DOT);
+    for (vector<Symbol>* vec : *_board){
+        for (int SymbolIndex = 0; SymbolIndex < _size; ++SymbolIndex){
+            vec->push_back(Board::Symbol('.'));
         }
     }
 }
 
-Board::~Board() {
-    for(vector<SYMBOL>* vectorToRemove : *_board){
-        delete vectorToRemove;
-    }
-    delete _board;
+Board::Board(Board& board) {
+	_board = new vector<vector<Symbol>*>();
+	_size = board._size;
+	for (vector<Symbol>* row : *board._board) {
+		vector<Symbol>* new_row = new vector<Symbol>();
+		_board->push_back(new_row);
+		for (Symbol symbol : *row) {
+			new_row->push_back(*(new Symbol(symbol.getChar())));
+		}
+	}
 }
 
-vector<vector<SYMBOL>*>* Board::getBoard() {
+Board::~Board() {
+	delBoard();
+}
+
+void Board::delBoard() {
+	for (vector<Board::Symbol>* vectorToRemove : *_board) {
+		delete vectorToRemove;
+	}
+	delete _board;
+}
+
+vector<vector<Board::Symbol>*>* Board::getBoard() {
     return _board;
 }
 
 ostream& operator<<(ostream &out, Board &board) {
     string ans = "";
-    for(vector<SYMBOL>* vector : *(board.getBoard())){
-        for(SYMBOL symbol : *vector){
-            out << symbol;
+    for(vector<Board::Symbol>* vector : *(board.getBoard())){
+        for(Board::Symbol Symbol : *vector){
+            out << Symbol.getChar();
         }
         out << endl;
     }
     return out;
 }
 
-Board& Board::operator=(SYMBOL symbol) {
-    for(vector<SYMBOL>* vector : *(_board)) {
-        for (SYMBOL& symbolToChange : *vector) {
-            symbolToChange = symbol;
+Board& Board::operator=(char Symbol) {
+    for(vector<Board::Symbol>* vector : *(_board)) {
+        for (Board::Symbol& SymbolToChange : *vector) {
+            SymbolToChange = Symbol;
         }
     }
     return *this;
 }
 
-SYMBOL& Board::operator[](Index index) {
+Board& Board::operator=(Board& board) {
+	delBoard();
+	_board = new vector<vector<Symbol>*>();
+	_size = board._size;
+	for (vector<Symbol>* row : *board._board) {
+		vector<Symbol>* new_row = new vector<Symbol>();
+		_board->push_back(new_row);
+		for (Symbol symbol : *row) {
+			new_row->push_back(*(new Symbol(symbol.getChar())));
+		}
+	}
+	return *this;
+}
+
+Board::Symbol& Board::operator[](Index index) {
     if (!isInBound(index)){
-        throw (IllegalCoordinateException(index));
+        throw IllegalCoordinateException(index);
     }
-    vector<SYMBOL>& vec = *(*_board)[index.getRow()];
-    return vec[index.getCol()];
+	else {
+		vector<Symbol>* vec = (*_board)[index.getRow()];
+		return vec->at(index.getCol());
+	}
 }
 
 bool Board::isInBound(Index& index) {
-    if (index.getRow() <= 0 || index.getRow()>= _size){
+    if (index.getRow() < 0 || index.getRow()>= _size){
         return false;
     }
-    if (index.getCol() <= 0 || index.getCol()>= _size){
+    if (index.getCol() < 0 || index.getCol()>= _size){
         return false;
     }
     return true;
+}
+
+Board::Symbol::Symbol(char c) {
+	_val = c;
+}
+
+char Board::Symbol::getChar() {
+	return _val;
+}
+
+Board::Symbol & Board::Symbol::operator=(char c) {
+	if (c != 'X' && c != 'O' && c != '.') throw IllegalCharException(c + "");
+	else _val = c;
+}
+
+Board::Symbol::operator char() {
+	return _val;
 }

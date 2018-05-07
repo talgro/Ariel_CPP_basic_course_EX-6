@@ -8,28 +8,37 @@
 #include <vector>
 #include <iosfwd>
 #include "Index.hpp"
-typedef char SYMBOL;
 
 using namespace std;
 
 class Board {
 private:
     //members
-    int _size;
-    vector<vector<SYMBOL>*>* _board;
-    bool isInBound(Index& index);
-public:
-    static const SYMBOL DOT = '.';
-    static const SYMBOL X = 'X';
-    static const SYMBOL O = 'O';
+	class Symbol {
+	private:
+		char _val;
+	public:
+		char getChar();
 
+		Symbol(char c);
+
+		Symbol& operator= (char c);
+		operator char();
+	};
+    int _size;
+    vector<vector<Symbol>*>* _board;
+    bool isInBound(Index& index);
+	void delBoard();
+public:
     Board (int size);
+	Board (Board& board);
     ~Board();
-    vector<vector<SYMBOL>*>* getBoard();
+    vector<vector<Symbol>*>* getBoard();
 
     friend ostream& operator<< (ostream& out, Board& board);
-    Board& operator= (SYMBOL c);
-    SYMBOL& operator[] (Index index);
+    Board& operator= (char c);
+	Board& operator= (Board& board);
+    Symbol& operator[] (Index index);
 };
 
 #endif //INC_6_BOARD_HPP
