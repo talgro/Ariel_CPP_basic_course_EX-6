@@ -3,7 +3,6 @@
 //
 
 #include "IllegalCharException.hpp"
-#include <iostream>
 
 IllegalCharException::IllegalCharException(char badChar)
 	: _badChar(badChar) {}

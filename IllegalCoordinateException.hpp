@@ -6,14 +6,13 @@
 #define INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
 
 #include <string>
-#include <exception>
 class Index;
 using namespace std;
 
 class IllegalCoordinateException{
-
 private:
     int _row, _col;
+
 public:
     IllegalCoordinateException(int row, int col);
     string theCoordinate() const;

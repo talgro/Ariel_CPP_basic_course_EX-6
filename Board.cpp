@@ -45,17 +45,17 @@ void Board::delBoard() {
 	delete _board;
 }
 
-vector<vector<Board::Symbol>*>* Board::getBoard() {
+vector<vector<Board::Symbol>*>* Board::getBoard() const{
     return _board;
 }
 
-ostream& operator<<(ostream &out, Board &board) {
+ostream& operator<<(ostream &out, const Board &board) {
     string ans = "";
     for(vector<Board::Symbol>* vector : *(board.getBoard())){
         for(Board::Symbol Symbol : *vector){
             out << Symbol.getChar();
         }
-        out << endl;
+        out << "\n";
     }
     return out;
 }

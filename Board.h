@@ -33,9 +33,9 @@ public:
     Board (int size);
 	Board (Board& board);
     ~Board();
-    vector<vector<Symbol>*>* getBoard();
+    vector<vector<Symbol>*>* getBoard() const;
 
-    friend ostream& operator<< (ostream& out, Board& board);
+    friend ostream& operator<< (ostream& out, const Board& board);
     Board& operator= (char c);
 	Board& operator= (Board& board);
     Symbol& operator[] (Index index);

@@ -6,9 +6,7 @@
 #define INC_6_ILLEGALCHAREXCEPTION_HPP
 
 using namespace std;
-#include <exception>
 #include <string>
-#include "Index.hpp"
 
 class IllegalCharException {
 
