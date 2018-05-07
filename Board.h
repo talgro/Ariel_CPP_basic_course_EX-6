@@ -14,6 +14,7 @@ using namespace std;
 class Board {
 private:
     //members
+
 	class Symbol {
 	private:
 		char _val;
@@ -22,9 +23,11 @@ private:
 
 		Symbol(char c);
 
+		bool operator==(const int num);
 		Symbol& operator= (char ch);
 		operator char();
 	};
+
     int _size;
     vector<vector<Symbol>*>* _board;
     bool isInBound(Index& index);
