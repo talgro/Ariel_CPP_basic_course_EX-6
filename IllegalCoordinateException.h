@@ -7,7 +7,7 @@
 
 #include <string>
 class Index;
-using namespace std;
+//using namespace std;
 
 class IllegalCoordinateException{
 private:
@@ -15,7 +15,7 @@ private:
 
 public:
     IllegalCoordinateException(int row, int col);
-    string theCoordinate() const;
+    std::string theCoordinate() const;
 };
 
 #endif //INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
