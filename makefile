@@ -12,10 +12,10 @@ Index.o: Index.cpp Index.hpp
 main.o: main.cpp Board.h IllegalCharException.h IllegalCoordinateException.h 
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
-IllegalCoordinateException.o: IllegalCoordinateException.h
+IllegalCoordinateException.o: IllegalCoordinateException.h IllegalCoordinateException.cpp
 	$(CXX) $(CXXFLAGS) -c IllegalCoordinateException.cpp -o IllegalCoordinateException.o
 	
-IllegalCharException.o: IllegalCharException.h
+IllegalCharException.o: IllegalCharException.h IllegalCharException.cpp
 	$(CXX) $(CXXFLAGS) -c IllegalCharException.cpp -o IllegalCharException.o
 
 clean:
