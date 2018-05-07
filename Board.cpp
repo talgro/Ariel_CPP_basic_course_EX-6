@@ -7,8 +7,8 @@
 #include <iostream>
 #include "Board.h"
 #include "Index.hpp"
-#include "IllegalCoordinateException.hpp"
-#include "IllegalCharException.hpp"
+#include "IllegalCoordinateException.h"
+#include "IllegalCharException.h"
 
 Board::Board(int size)
         : _size(size), _board(new vector<vector<Symbol>*>()){

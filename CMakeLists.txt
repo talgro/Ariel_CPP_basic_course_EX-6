@@ -3,4 +3,4 @@ project(6)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(6 main.cpp Board.cpp Board.h IllegalCoordinateException.cpp IllegalCoordinateException.hpp Index.cpp Index.hpp IllegalCharException.cpp IllegalCharException.hpp)
+add_executable(6 main.cpp Board.cpp Board.h IllegalCoordinateException.cpp IllegalCoordinateException.h Index.cpp Index.hpp IllegalCharException.cpp IllegalCharException.h)

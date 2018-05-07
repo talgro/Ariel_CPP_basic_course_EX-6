@@ -2,7 +2,7 @@
 // Created by tal on 06/05/18.
 //
 
-#include "IllegalCharException.hpp"
+#include "IllegalCharException.h"
 
 IllegalCharException::IllegalCharException(char badChar)
 	: _badChar(badChar) {}

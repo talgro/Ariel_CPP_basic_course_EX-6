@@ -2,7 +2,7 @@
 // Created by tal on 06/05/18.
 //
 
-#include "IllegalCoordinateException.hpp"
+#include "IllegalCoordinateException.h"
 
 IllegalCoordinateException::IllegalCoordinateException(int row, int col)
 	: _row(row), _col(col) {}
