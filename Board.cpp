@@ -120,6 +120,6 @@ Board::Symbol::operator char() {
 	return _val;
 }
 
-bool Board::Symbol::operator==(const int num) {
+bool Board::Symbol::operator==(const int num) const{
 	return _val == num;
 }
