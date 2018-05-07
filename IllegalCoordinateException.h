@@ -9,7 +9,7 @@
 class Index;
 //using namespace std;
 
-class IllegalCoordinateException{
+class IllegalCoordinateException : public std::exception{
 private:
     int _row, _col;
 
