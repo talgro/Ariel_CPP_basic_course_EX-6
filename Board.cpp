@@ -112,8 +112,10 @@ char Board::Symbol::getChar() {
 }
 
 Board::Symbol & Board::Symbol::operator=(char ch) {
-	if (ch != 'X' && ch != 'O' && ch != '.') throw IllegalCharException(ch);
-	else _val = ch;
+	if (ch != 'X' && ch != 'O' && ch != '.'){
+		throw IllegalCharException(ch);
+	}
+	_val = ch;
 }
 
 Board::Symbol::operator char() {
