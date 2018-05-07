@@ -7,7 +7,7 @@ Board.o: Board.cpp Board.h IllegalCharException.hpp IllegalCoordinateException.h
 	$(CXX) $(CXXFLAGS) -c Board.cpp -o Board.o
 
 Index.o: Index.cpp Index.hpp
-	$(CXX) $(CXXFLAGS) -c Piece.cpp -o Piece.o
+	$(CXX) $(CXXFLAGS) -c Index.cpp -o Index.o
 
 main.o: main.cpp Board.h IllegalCharException.hpp IllegalCoordinateException.hpp 
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
