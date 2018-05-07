@@ -7,20 +7,9 @@
 #include <iostream>
 #include <stdio.h>
 
-IllegalCoordinateException::IllegalCoordinateException(Index& badIndex) {
-	string temp = badIndex.getRow() + "," + badIndex.getCol() + '\0';
-	_msg = &temp[0];
-	cout << _msg << endl;
-}
+IllegalCoordinateException::IllegalCoordinateException(int row, int col)
+	: _row(row), _col(col) {}
 
-IllegalCoordinateException::~IllegalCoordinateException() {
-	cout << "testaa" << endl;
-}
-
-const char* IllegalCoordinateException::what() const noexcept {
-	return _msg;
-}
-
-string IllegalCoordinateException::theCoordinate() const noexcept {
-    return what();
+string IllegalCoordinateException::theCoordinate() const {
+    return to_string(_row) + "," + to_string(_col);;
 }

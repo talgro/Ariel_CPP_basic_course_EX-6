@@ -13,10 +13,10 @@ using namespace std;
 class IllegalCharException {
 
 private:
-    string _badChar;
+    char _badChar;
 public:
-    IllegalCharException(string badChar);
-    string theChar() const;
+    IllegalCharException(char badChar);
+    char theChar() const;
 };
 
 

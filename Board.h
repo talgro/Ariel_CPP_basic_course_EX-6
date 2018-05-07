@@ -22,7 +22,7 @@ private:
 
 		Symbol(char c);
 
-		Symbol& operator= (char c);
+		Symbol& operator= (char ch);
 		operator char();
 	};
     int _size;

@@ -85,7 +85,7 @@ Board& Board::operator=(Board& board) {
 
 Board::Symbol& Board::operator[](Index index) {
     if (!isInBound(index)){
-        throw IllegalCoordinateException(index);
+        throw IllegalCoordinateException(index.getRow(), index.getCol());
     }
 	else {
 		vector<Symbol>* vec = (*_board)[index.getRow()];
@@ -111,9 +111,9 @@ char Board::Symbol::getChar() {
 	return _val;
 }
 
-Board::Symbol & Board::Symbol::operator=(char c) {
-	if (c != 'X' && c != 'O' && c != '.') throw IllegalCharException(c + "");
-	else _val = c;
+Board::Symbol & Board::Symbol::operator=(char ch) {
+	if (ch != 'X' && ch != 'O' && ch != '.') throw IllegalCharException(ch);
+	else _val = ch;
 }
 
 Board::Symbol::operator char() {

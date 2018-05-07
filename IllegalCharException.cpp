@@ -5,10 +5,9 @@
 #include "IllegalCharException.hpp"
 #include <iostream>
 
-IllegalCharException::IllegalCharException(string badChar)
+IllegalCharException::IllegalCharException(char badChar)
 	: _badChar(badChar) {}
 
-string IllegalCharException::theChar() const{
-
+char IllegalCharException::theChar() const{
 	return _badChar;
 }

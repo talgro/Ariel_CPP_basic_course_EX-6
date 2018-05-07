@@ -10,15 +10,13 @@
 class Index;
 using namespace std;
 
-class IllegalCoordinateException : public exception{
+class IllegalCoordinateException{
 
 private:
-    char* _msg;
+    int _row, _col;
 public:
-    const char* what() const noexcept override;
-    IllegalCoordinateException(Index& badIndex);
-	~IllegalCoordinateException();
-    string theCoordinate() const noexcept;
+    IllegalCoordinateException(int row, int col);
+    string theCoordinate() const;
 };
 
 #endif //INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
