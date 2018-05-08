@@ -7,7 +7,6 @@
 
 #include <string>
 class Index;
-//using namespace std;
 
 class IllegalCoordinateException : public std::exception{
 private:
