@@ -57,6 +57,7 @@ ostream& operator<<(ostream &out, const Board &board) {
         }
         out << "\n";
     }
+    out << "\n";
     return out;
 }
 
