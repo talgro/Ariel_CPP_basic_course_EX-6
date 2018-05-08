@@ -8,6 +8,7 @@
 #include <vector>
 #include <iosfwd>
 #include "Index.hpp"
+#include "IllegalCharException.h"
 
 using namespace std;
 
