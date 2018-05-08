@@ -50,7 +50,6 @@ vector<vector<Board::Symbol>*>* Board::getBoard() const{
 }
 
 ostream& operator<<(ostream &out, const Board &board) {
-    string ans = "";
     for(vector<Board::Symbol>* vector : *(board.getBoard())){
         for(Board::Symbol Symbol : *vector){
             out << Symbol.getChar();
@@ -69,7 +68,7 @@ Board& Board::operator=(char Symbol) {
     return *this;
 }
 
-Board& Board::operator=(Board& board) {
+Board& Board::operator=(Board const& board) {
 	delBoard();
 	_board = new vector<vector<Symbol>*>();
 	_size = board._size;

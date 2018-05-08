@@ -43,7 +43,7 @@ public:
 
     friend ostream& operator<< (ostream& out, const Board& board);
     Board& operator= (char c);
-	Board& operator= (Board& board);
+	Board& operator= (Board const& board);
     Symbol& operator[] (Index index) const;
     bool operator==(const Board& board) const;
 };
