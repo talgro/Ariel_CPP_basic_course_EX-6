@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <iosfwd>
-class Index;
+#include "Index.hpp"
 
 using namespace std;
 
@@ -41,7 +41,7 @@ public:
     friend ostream& operator<< (ostream& out, const Board& board);
     Board& operator= (char c);
 	Board& operator= (Board& board);
-    Symbol& operator[] (Index& index);
+    Symbol& operator[] (Index index);
 };
 
 #endif //INC_6_BOARD_HPP
