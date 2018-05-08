@@ -127,3 +127,18 @@ Board::Symbol::operator char() {
 bool Board::Symbol::operator==(const int num) const{
 	return _val == num;
 }
+
+bool Board::operator==(const Board &board) const {
+	if (_size != board.getBoard()->size()){
+		return false;
+	}
+	for (int row = 0; row < _size; row++){
+		for (int col = 0; col < _size; col++){
+			Index temp(row,col);
+			if ((*this)[temp] != board[temp]){
+				return false;
+			}
+		}
+	}
+	return true;
+}
