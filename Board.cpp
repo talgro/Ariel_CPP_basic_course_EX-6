@@ -84,7 +84,7 @@ Board& Board::operator=(Board& board) {
 	return *this;
 }
 
-Board::Symbol& Board::operator[](Index index) {
+Board::Symbol& Board::operator[](Index index) const{
     if (!isInBound(index)){
         IllegalCoordinateException ex = IllegalCoordinateException(index.getRow(), index.getCol());
         throw ex;
@@ -95,7 +95,7 @@ Board::Symbol& Board::operator[](Index index) {
 	}
 }
 
-bool Board::isInBound(Index& index) {
+bool Board::isInBound(Index& index) const{
     if (index.getRow() < 0 || index.getRow()>= _size){
         return false;
     }

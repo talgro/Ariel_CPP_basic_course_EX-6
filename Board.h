@@ -32,7 +32,7 @@ private:
 
     int _size;
     vector<vector<Symbol>*>* _board;
-    bool isInBound(Index& index);
+    bool isInBound(Index& index) const;
 	void delBoard();
 public:
     Board (int size);
