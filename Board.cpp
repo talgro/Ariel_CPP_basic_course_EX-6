@@ -84,8 +84,7 @@ Board& Board::operator=(Board const& board) {
 
 Board::Symbol& Board::operator[](Index index) const{
     if (!isInBound(index)){
-        IllegalCoordinateException ex = IllegalCoordinateException(index.getRow(), index.getCol());
-        throw ex;
+        throw IllegalCoordinateException(index.getRow(), index.getCol());
     }
 	else {
 		vector<Symbol>* vec = (*_board)[index.getRow()];
