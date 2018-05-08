@@ -5,7 +5,7 @@
 #include "IllegalCoordinateException.h"
 using namespace std;
 
-IllegalCoordinateException::IllegalCoordinateException(int row, int col)
+IllegalCoordinateException::IllegalCoordinateException(int row, int col) const
 	: _row(row), _col(col) {}
 
 string IllegalCoordinateException::theCoordinate() const {

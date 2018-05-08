@@ -13,7 +13,7 @@ private:
     int _row, _col;
 
 public:
-    IllegalCoordinateException(int row, int col);
+    IllegalCoordinateException(int row, int col) const;
     std::string theCoordinate() const;
 };
 
