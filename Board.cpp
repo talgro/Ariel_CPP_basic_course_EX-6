@@ -128,6 +128,10 @@ bool Board::Symbol::operator==(const int num) const{
 	return _val == num;
 }
 
+bool Board::Symbol::operator==(const Symbol& symbol) const {
+	return _val == symbol._val;
+}
+
 bool Board::operator==(const Board &board) const {
 	if (_size != board.getBoard()->size()){
 		return false;

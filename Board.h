@@ -26,6 +26,7 @@ private:
 		Symbol(char c);
 
 		bool operator==(const int num) const;
+		bool operator==(const Symbol& symbol) const;
 		Symbol& operator= (char ch);
 		operator char();
 	};
