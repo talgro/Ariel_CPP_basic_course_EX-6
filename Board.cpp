@@ -115,6 +115,7 @@ Board::Symbol & Board::Symbol::operator=(char ch) {
 		throw IllegalCharException(ch);
 	}
 	_val = ch;
+	return *this;
 }
 
 Board::Symbol::operator char() {
