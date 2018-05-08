@@ -22,7 +22,7 @@ Board::Board(int size)
     }
 }
 
-Board::Board(Board& board) {
+Board::Board(const Board& board) {
 	_board = new vector<vector<Symbol>*>();
 	_size = board._size;
 	for (vector<Symbol>* row : *board._board) {
@@ -85,7 +85,8 @@ Board& Board::operator=(Board& board) {
 
 Board::Symbol& Board::operator[](Index index) {
     if (!isInBound(index)){
-        throw IllegalCoordinateException(index.getRow(), index.getCol());
+        IllegalCoordinateException ex = IllegalCoordinateException(index.getRow(), index.getCol());
+        throw ex;
     }
 	else {
 		vector<Symbol>* vec = (*_board)[index.getRow()];

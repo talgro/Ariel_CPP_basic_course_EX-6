@@ -5,8 +5,7 @@
 #ifndef INC_6_ILLEGALCHAREXCEPTION_HPP
 #define INC_6_ILLEGALCHAREXCEPTION_HPP
 #include <string>
-//#include <exception>
-//using namespace std;
+#include <exception>
 
 class IllegalCharException : public std::exception{
 

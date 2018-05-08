@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <iosfwd>
-#include "Index.hpp"
+class Index;
 
 using namespace std;
 
@@ -34,14 +34,14 @@ private:
 	void delBoard();
 public:
     Board (int size);
-	Board (Board& board);
+	Board (const Board& board);
     ~Board();
     vector<vector<Symbol>*>* getBoard() const;
 
     friend ostream& operator<< (ostream& out, const Board& board);
     Board& operator= (char c);
 	Board& operator= (Board& board);
-    Symbol& operator[] (Index index);
+    Symbol& operator[] (Index& index);
 };
 
 #endif //INC_6_BOARD_HPP
