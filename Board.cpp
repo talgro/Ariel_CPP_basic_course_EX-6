@@ -55,9 +55,8 @@ ostream& operator<<(ostream &out, const Board &board) {
         for(Board::Symbol Symbol : *vector){
             out << Symbol.getChar();
         }
-        out << "\n";
+        out << '\n';
     }
-    out << "\n";
     return out;
 }
 
