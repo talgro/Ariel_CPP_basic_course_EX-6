@@ -9,6 +9,7 @@
 #include <iosfwd>
 #include "Index.hpp"
 #include "IllegalCharException.h"
+#include "IllegalCoordinateException.h"
 
 using namespace std;
 
