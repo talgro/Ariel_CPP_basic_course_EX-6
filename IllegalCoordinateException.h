@@ -2,11 +2,11 @@
 // Created by tal on 06/05/18.
 //
 
-#ifndef INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
-#define INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
+#ifndef INC_6_ILLEGALCOORDINATEEXCEPTION_H
+#define INC_6_ILLEGALCOORDINATEEXCEPTION_H
 
 #include <string>
-class Index;
+class Coordinate;
 
 class IllegalCoordinateException : public std::exception{
 private:
@@ -17,4 +17,4 @@ public:
     std::string theCoordinate() const;
 };
 
-#endif //INC_6_ILLEGALCOORDINATEEXCEPTION_HPP
+#endif //INC_6_ILLEGALCOORDINATEEXCEPTION_H

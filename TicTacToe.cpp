@@ -7,11 +7,19 @@ using namespace std;
 
 TicTacToe::TicTacToe(int size) : _board(new Board(size)), _winner(nullptr) {}
 
-bool TicTacToe::checkWin(const Coordinate& coordinate, char c) {
+Board TicTacToe::board() {
+	return _board;
+}
+
+Player TicTacToe::winner() {
+	return _winner;
+}
+
+bool TicTacToe::checkWin(Coordinate& coordinate, char c) {
 	return checkDiagonal(coordinate, c) || checkHorizontal(coordinate, c) || checkVertical(coordinate, c);
 }
 
-bool TicTacToe::checkDiagonal(const Coordinate& coordinate, char c) {
+bool TicTacToe::checkDiagonal(Coordinate& coordinate, char c) {
 	if (coordinate.getCol() == coordinate.getRow()) {
 		for (int i = 0; i < _board.getSize()) {
 			if (_board[{i, i}] != c) {
@@ -23,7 +31,7 @@ bool TicTacToe::checkDiagonal(const Coordinate& coordinate, char c) {
 	return false;
 }
 
-bool TicTacToe::checkHorizontal(const Coordinate& coordinate, char c) {
+bool TicTacToe::checkHorizontal(Coordinate& coordinate, char c) {
 	int row = coordinate.getRow();
 	for (int col = 0; col < _board.getSize(); ++col) {
 		if (_board[{row, col}] != c) {
@@ -33,7 +41,7 @@ bool TicTacToe::checkHorizontal(const Coordinate& coordinate, char c) {
 	return true;
 }
 
-bool TicTacToe::checkVertical(const Coordinate& coordinate, char c) {
+bool TicTacToe::checkVertical(Coordinate& coordinate, char c) {
 	int col = coordinate.getCol();
 	for (int row = 0; row < _board.getSize(); ++row) {
 		if (_board[{row, col}] != c) {

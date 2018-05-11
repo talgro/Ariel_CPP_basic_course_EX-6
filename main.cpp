@@ -2,6 +2,10 @@
 #include "DummyPlayers.h"
 
 #include "Champion.h"
+#include <iostream>
+#include "Board.h"
+#include <string>
+using namespace std;
 
 void printResults(const TicTacToe& game) {
 	cout << endl << "The final board is " << endl << game.board();
@@ -22,6 +26,8 @@ void playAndPrintWinner(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
 
 
 int main() {
+	cout << "here";
+
 	TicTacToe game(4);       // Initializes a game on a 4x4 board
 	XYPlayer player1;
 	YXPlayer player2;

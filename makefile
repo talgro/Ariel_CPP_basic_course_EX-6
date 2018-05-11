@@ -29,5 +29,5 @@ clean:
 	rm *.o a.out
 
 buildAndRun: all main.o
-	$(CXX) $(CXXFLAGS) IllegalCoordinateException.o IllegalCharException.o main.o Board.o Coordinate.o
+	$(CXX) $(CXXFLAGS) IllegalCoordinateException.o IllegalCharException.o main.o Board.o Coordinate.o DummyPlayers.o TicTacToe.o Champion.o
 	./a.out

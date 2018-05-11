@@ -2,8 +2,8 @@
 // Created by tal on 06/05/18.
 //
 
-#ifndef INC_6_BOARD_HPP
-#define INC_6_BOARD_HPP
+#ifndef INC_6_BOARD_H
+#define INC_6_BOARD_H
 
 #include <vector>
 #include <iosfwd>
@@ -42,4 +42,4 @@ public:
     Symbol& operator[] (Coordinate coordinate);
 };
 
-#endif //INC_6_BOARD_HPP
+#endif //INC_6_BOARD_H

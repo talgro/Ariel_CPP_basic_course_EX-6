@@ -5,9 +5,9 @@
 #include "IllegalCharException.h"
 using namespace std;
 
-IllegalCharException::IllegalCharException(char badChar)
+IllegalCharException::IllegalCharException(string badChar)
 	: _badChar(badChar) {}
 
-char IllegalCharException::theChar() const{
+string IllegalCharException::theChar() const{
 	return _badChar;
 }

@@ -2,8 +2,8 @@
 // Created by tal on 06/05/18.
 //
 
-#ifndef INC_6_ILLEGALCHAREXCEPTION_HPP
-#define INC_6_ILLEGALCHAREXCEPTION_HPP
+#ifndef INC_6_ILLEGALCHAREXCEPTION_H
+#define INC_6_ILLEGALCHAREXCEPTION_H
 
 using namespace std;
 #include <exception>
@@ -20,7 +20,7 @@ public:
 };
 
 
-#endif //INC_6_ILLEGALCHAREXCEPTION_HPP
+#endif //INC_6_ILLEGALCHAREXCEPTION_H
 
 
 

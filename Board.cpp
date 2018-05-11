@@ -7,8 +7,8 @@
 #include <iostream>
 #include "Board.h"
 #include "Coordinate.hpp"
-#include "IllegalCoordinateException.hpp"
-#include "IllegalCharException.hpp"
+#include "IllegalCoordinateException.h"
+#include "IllegalCharException.h"
 
 Board::Board(int size)
         : _size(size), _board(new vector<vector<Symbol>*>()){
@@ -83,21 +83,21 @@ Board& Board::operator=(Board& board) {
 	return *this;
 }
 
-Board::Symbol& Board::operator[](Coordinate Coordinate) {
-    if (!isInBound(Coordinate)){
-        throw IllegalCoordinateException(Coordinate);
+Board::Symbol& Board::operator[](Coordinate coordinate) {
+    if (!isInBound(coordinate)){
+        throw IllegalCoordinateException(coordinate.getRow(), coordinate.getCol());
     }
 	else {
-		vector<Symbol>* vec = (*_board)[Coordinate.getRow()];
-		return vec->at(Coordinate.getCol());
+		vector<Symbol>* vec = (*_board)[coordinate.getRow()];
+		return vec->at(coordinate.getCol());
 	}
 }
 
-bool Board::isInBound(Coordinate& Coordinate) {
-    if (Coordinate.getRow() < 0 || Coordinate.getRow()>= _size){
+bool Board::isInBound(Coordinate& coordinate) {
+    if (coordinate.getRow() < 0 || coordinate.getRow()>= _size){
         return false;
     }
-    if (Coordinate.getCol() < 0 || Coordinate.getCol()>= _size){
+    if (coordinate.getCol() < 0 || coordinate.getCol()>= _size){
         return false;
     }
     return true;
@@ -114,6 +114,7 @@ char Board::Symbol::getChar() {
 Board::Symbol & Board::Symbol::operator=(char c) {
 	if (c != 'X' && c != 'O' && c != '.') throw IllegalCharException(c + "");
 	else _val = c;
+	return *this;
 }
 
 Board::Symbol::operator char() {

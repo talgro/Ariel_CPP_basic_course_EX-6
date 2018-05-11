@@ -7,11 +7,11 @@
 Coordinate::Coordinate(int row, int col)
     :   _col(col), _row(row) {}
 
-int Coordinate::getCol() {
+int Coordinate::getCol() const {
     return _col;
 }
 
-int Coordinate::getRow() {
+int Coordinate::getRow() const {
     return _row;
 }
 

@@ -12,8 +12,8 @@ private:
     int _col;
 public:
 	Coordinate(int row, int col);
-    int getRow();
-    int getCol();
+    int getRow() const;
+    int getCol() const;
 	bool operator==(const Coordinate& rhs);
 };
 

@@ -3,24 +3,15 @@
 //
 
 #include "Coordinate.hpp"
-#include "IllegalCoordinateException.hpp"
+#include "IllegalCoordinateException.h"
 #include <iostream>
 #include <stdio.h>
+#include <string>
 
-IllegalCoordinateException::IllegalCoordinateException(Coordinate& badCoordinate) {
-	string temp = badCoordinate.getRow() + "," + badCoordinate.getCol() + '\0';
-	_msg = &temp[0];
-	cout << _msg << endl;
-}
+using namespace std;
 
-IllegalCoordinateException::~IllegalCoordinateException() {
-	cout << "testaa" << endl;
-}
+IllegalCoordinateException::IllegalCoordinateException(int row, int col) : _row(row), _col(col) {}
 
-const char* IllegalCoordinateException::what() const noexcept {
-	return _msg;
-}
-
-string IllegalCoordinateException::theCoordinate() const noexcept {
-    return what();
+string IllegalCoordinateException::theCoordinate() const {
+	return to_string(_row) + ", " + to_string(_col);
 }

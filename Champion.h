@@ -1,5 +1,5 @@
-#ifndef INC_6_CHAMPION_HPP
-#define INC_6_CHAMPION_HPP
+#ifndef INC_6_CHAMPION_H
+#define INC_6_CHAMPION_H
 
 #include "Player.h"
 
@@ -8,4 +8,4 @@ public:
 	const string name() const override { return "TomTal"; }
 	const Coordinate play(const Board& board) override;
 };
-#endif //INC_6_CHAMPION_HPP
+#endif //INC_6_CHAMPION_H
