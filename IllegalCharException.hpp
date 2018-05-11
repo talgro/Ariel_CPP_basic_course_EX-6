@@ -8,7 +8,7 @@
 using namespace std;
 #include <exception>
 #include <string>
-#include "Index.hpp"
+#include "Coordinate.hpp"
 
 class IllegalCharException {
 

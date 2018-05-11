@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include "Board.h"
-#include "Index.hpp"
+#include "Coordinate.hpp"
 #include "IllegalCoordinateException.hpp"
 #include "IllegalCharException.hpp"
 
@@ -16,7 +16,7 @@ Board::Board(int size)
         _board->push_back(new vector<Symbol>());
     }
     for (vector<Symbol>* vec : *_board){
-        for (int SymbolIndex = 0; SymbolIndex < _size; ++SymbolIndex){
+        for (int SymbolCoordinate = 0; SymbolCoordinate < _size; ++SymbolCoordinate){
             vec->push_back(Board::Symbol('.'));
         }
     }
@@ -83,21 +83,21 @@ Board& Board::operator=(Board& board) {
 	return *this;
 }
 
-Board::Symbol& Board::operator[](Index index) {
-    if (!isInBound(index)){
-        throw IllegalCoordinateException(index);
+Board::Symbol& Board::operator[](Coordinate Coordinate) {
+    if (!isInBound(Coordinate)){
+        throw IllegalCoordinateException(Coordinate);
     }
 	else {
-		vector<Symbol>* vec = (*_board)[index.getRow()];
-		return vec->at(index.getCol());
+		vector<Symbol>* vec = (*_board)[Coordinate.getRow()];
+		return vec->at(Coordinate.getCol());
 	}
 }
 
-bool Board::isInBound(Index& index) {
-    if (index.getRow() < 0 || index.getRow()>= _size){
+bool Board::isInBound(Coordinate& Coordinate) {
+    if (Coordinate.getRow() < 0 || Coordinate.getRow()>= _size){
         return false;
     }
-    if (index.getCol() < 0 || index.getCol()>= _size){
+    if (Coordinate.getCol() < 0 || Coordinate.getCol()>= _size){
         return false;
     }
     return true;

@@ -2,18 +2,19 @@
 // Created by tal on 06/05/18.
 //
 
-#ifndef INC_6_INDEX_HPP
-#define INC_6_INDEX_HPP
+#ifndef INC_6_COORDINATE_HPP
+#define INC_6_COORDINATE_HPP
 
 
-class Index {
+class Coordinate {
 private:
     int _row;
     int _col;
 public:
-    Index(int row, int col);
+	Coordinate(int row, int col);
     int getRow();
     int getCol();
+	bool operator==(const Coordinate& rhs);
 };
 
 

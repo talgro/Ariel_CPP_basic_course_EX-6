@@ -7,7 +7,7 @@
 
 #include <string>
 #include <exception>
-class Index;
+class Coordinate;
 using namespace std;
 
 class IllegalCoordinateException : public exception{
@@ -16,7 +16,7 @@ private:
     char* _msg;
 public:
     const char* what() const noexcept override;
-    IllegalCoordinateException(Index& badIndex);
+    IllegalCoordinateException(Coordinate& badIndex);
 	~IllegalCoordinateException();
     string theCoordinate() const noexcept;
 };
