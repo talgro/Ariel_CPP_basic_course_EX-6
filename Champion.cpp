@@ -1,6 +1,5 @@
 #include "Champion.h"
 #include "Board.h"
-#include "Champion.hpp"
 
 using namespace std;
 

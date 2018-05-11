@@ -1,4 +1,4 @@
-#include "TicTacToe.hpp"
+#include "TicTacToe.h"
 #include "Board.h"
 #include "Player.h"
 #include "Coordinate.hpp"

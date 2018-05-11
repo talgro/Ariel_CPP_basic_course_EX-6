@@ -1,5 +1,5 @@
-#ifndef INC_6_TICTACTOE_HPP
-#define INC_6_TICTACTOE_HPP
+#ifndef INC_6_TICTACTOE_H
+#define INC_6_TICTACTOE_H
 
 class Board;
 class Player;
@@ -19,3 +19,4 @@ public:
 	Board board() const { return _board; }
 	Player winner() const { return winner; }
 };
+#endif //INC_6_TICTACTOE_H
