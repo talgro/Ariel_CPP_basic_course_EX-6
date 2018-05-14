@@ -2,17 +2,20 @@
 #include "Board.h"
 #include "Player.h"
 #include "Coordinate.hpp"
+#include <vector>
+#include <string>
+#include <iostream>
 
 using namespace std;
 
-TicTacToe::TicTacToe(int size) : _board(new Board(size)), _winner(nullptr) {}
+TicTacToe::TicTacToe(int size) : _board(size), _winner(nullptr) {}
 
-Board TicTacToe::board() {
+const Board& TicTacToe::board() const{
 	return _board;
 }
 
-Player TicTacToe::winner() {
-	return _winner;
+Player& TicTacToe::winner() const{
+	return *_winner;
 }
 
 bool TicTacToe::checkWin(Coordinate& coordinate, char c) {
@@ -21,7 +24,7 @@ bool TicTacToe::checkWin(Coordinate& coordinate, char c) {
 
 bool TicTacToe::checkDiagonal(Coordinate& coordinate, char c) {
 	if (coordinate.getCol() == coordinate.getRow()) {
-		for (int i = 0; i < _board.getSize()) {
+		for (int i = 0; i < _board.getSize(); i++) {
 			if (_board[{i, i}] != c) {
 				return false;
 			}
@@ -51,39 +54,46 @@ bool TicTacToe::checkVertical(Coordinate& coordinate, char c) {
 	return true;
 }
 
-void TicTacToe::play(const Player& Xplayer, const Player& Oplayer) {
+void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
+	_board = '.';
 	Xplayer.setChar('X');
 	Oplayer.setChar('O');
-	Player otherPlayer = Oplayer;
-	Coordinate lastCoordinate{ -1, -1 };
-	vector<Player> players;
-	players.push_back(Xplayer);
-	players.push_back(Oplayer);
+	Player* otherPlayer = &Oplayer;
+	Coordinate lastCoordinate{-1, -1};
+	vector<Player*> players;
+	players.push_back(&Xplayer);
+	players.push_back(&Oplayer);
 	while (true) {
-		for (Player player : players) {
+		for (Player* player : players) {
 			try {
-				char c = player.getChar();
-				Coordinate coordinate = player.play(_board);
-				if (coordinate == lastCoordinate) {
-					winner = Oplayer;
-					return;
-				}
+				char currPlayerChar = player->getChar();
+				Coordinate coordinate = player->play(_board);
 				if (_board[coordinate] != '.') {
-					winner = otherPlayer;
+					cout << coordinate.getRow() << "" << coordinate.getCol() << endl;
+					cout << "illegal" << endl;
+					_winner = otherPlayer;
 					return;
 				}
-				_board[coordinate] = c;
-				if (checkWin(coordinate, c)) {
-					winner = player;
+				if (coordinate == lastCoordinate) {
+					cout << "tie" << endl;
+					_winner = &Oplayer;
+					return;
+				}
+				_board[coordinate] = currPlayerChar;
+				if (checkWin(coordinate, currPlayerChar)) {
+					cout << "valid" << endl;
+					_winner = player;
 					return;
 				}
 				otherPlayer = player;
 				lastCoordinate = coordinate;
 			}
 			catch (string msg) {
-				winner = otherPlayer;
+				cout << "exception" <<endl;
+				_winner = otherPlayer;
 				return;
 			}
 		}
 	}
+
 }

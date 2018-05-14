@@ -14,32 +14,35 @@ using namespace std;
 class Board {
 private:
     //members
-	class Symbol {
-	private:
-		char _val;
-	public:
-		char getChar();
+    class Symbol {
+    private:
+        char _val;
+    public:
+        char getChar();
 
-		Symbol(char c);
+        Symbol(char c);
 
-		Symbol& operator= (char c);
-		operator char();
-	};
+        Symbol& operator= (char c);
+        operator char();
+    };
+
     int _size;
     vector<vector<Symbol>*>* _board;
-    bool isInBound(Coordinate& coordinate);
+    bool isInBound(Coordinate& coordinate) const;
 	void delBoard();
 public:
+
     Board (int size);
 	Board (Board& board);
     ~Board();
-    vector<vector<Symbol>*>* getBoard();
-	int getSize() { return _size; }
+    vector<vector<Symbol>*>* getBoard() const;
+	int getSize() const { return _size; }
 
-    friend ostream& operator<< (ostream& out, Board& board);
+    friend ostream& operator<< (ostream& out, Board& board) ;
+    friend ostream& operator<< (ostream& out, const Board& board);
     Board& operator= (char c);
 	Board& operator= (Board& board);
-    Symbol& operator[] (Coordinate coordinate);
+    Symbol& operator[] (Coordinate coordinate)const;
 };
 
 #endif //INC_6_BOARD_H

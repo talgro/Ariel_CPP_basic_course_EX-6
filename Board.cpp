@@ -45,11 +45,22 @@ void Board::delBoard() {
 	delete _board;
 }
 
-vector<vector<Board::Symbol>*>* Board::getBoard() {
+vector<vector<Board::Symbol>*>* Board::getBoard() const {
     return _board;
 }
 
-ostream& operator<<(ostream &out, Board &board) {
+ostream& operator<<(ostream &out, Board &board){
+    string ans = "";
+    for(vector<Board::Symbol>* vector : *(board.getBoard())){
+        for(Board::Symbol Symbol : *vector){
+            out << Symbol.getChar();
+        }
+        out << endl;
+    }
+    return out;
+}
+
+ostream& operator<<(ostream &out, const Board &board){
     string ans = "";
     for(vector<Board::Symbol>* vector : *(board.getBoard())){
         for(Board::Symbol Symbol : *vector){
@@ -83,7 +94,7 @@ Board& Board::operator=(Board& board) {
 	return *this;
 }
 
-Board::Symbol& Board::operator[](Coordinate coordinate) {
+Board::Symbol& Board::operator[] (Coordinate coordinate) const{
     if (!isInBound(coordinate)){
         throw IllegalCoordinateException(coordinate.getRow(), coordinate.getCol());
     }
@@ -93,7 +104,7 @@ Board::Symbol& Board::operator[](Coordinate coordinate) {
 	}
 }
 
-bool Board::isInBound(Coordinate& coordinate) {
+bool Board::isInBound(Coordinate& coordinate) const{
     if (coordinate.getRow() < 0 || coordinate.getRow()>= _size){
         return false;
     }

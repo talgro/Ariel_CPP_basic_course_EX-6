@@ -7,6 +7,9 @@
 Coordinate::Coordinate(int row, int col)
     :   _col(col), _row(row) {}
 
+Coordinate::Coordinate(const Coordinate &other)
+    : _row(other.getRow()), _col(other.getCol()){}
+
 int Coordinate::getCol() const {
     return _col;
 }
