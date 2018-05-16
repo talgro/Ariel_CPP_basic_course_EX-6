@@ -26,7 +26,6 @@ void playAndPrintWinner(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
 
 
 int main() {
-	cout << "here";
 
 	TicTacToe game(4);       // Initializes a game on a 4x4 board
 	XYPlayer player1;

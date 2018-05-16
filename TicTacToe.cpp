@@ -31,6 +31,14 @@ bool TicTacToe::checkDiagonal(Coordinate& coordinate, char c) {
 		}
 		return true;
 	}
+	else {
+		for (int i = 0; i < _board.getSize(); i++) {
+			if (_board[{_board.getSize() - 1 - i, i}] != c) {
+				return false;
+			}
+		}
+		return true;
+	}
 	return false;
 }
 
@@ -69,19 +77,15 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 				char currPlayerChar = player->getChar();
 				Coordinate coordinate = player->play(_board);
 				if (_board[coordinate] != '.') {
-					cout << coordinate.getRow() << "" << coordinate.getCol() << endl;
-					cout << "illegal" << endl;
 					_winner = otherPlayer;
 					return;
 				}
 				if (coordinate == lastCoordinate) {
-					cout << "tie" << endl;
 					_winner = &Oplayer;
 					return;
 				}
 				_board[coordinate] = currPlayerChar;
 				if (checkWin(coordinate, currPlayerChar)) {
-					cout << "valid" << endl;
 					_winner = player;
 					return;
 				}
@@ -89,11 +93,9 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 				lastCoordinate = coordinate;
 			}
 			catch (string msg) {
-				cout << "exception" <<endl;
 				_winner = otherPlayer;
 				return;
 			}
 		}
 	}
-
 }
