@@ -64,6 +64,7 @@ bool TicTacToe::checkVertical(Coordinate& coordinate, char c) {
 
 void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 	_board = '.';
+	int freeSpaces = _numFreeSpaces;
 	Xplayer.setChar('X');
 	Oplayer.setChar('O');
 	Player* otherPlayer = &Oplayer;
@@ -75,7 +76,7 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 			try {
 				char currPlayerChar = player->getChar();
 				Coordinate coordinate = player->play(_board);
-				if (_numFreeSpaces == 0) {
+				if (freeSpaces == 0) {
 					_winner = &Oplayer;
 					return;
 				}
@@ -89,7 +90,7 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 					return;
 				}
 				otherPlayer = player;
-				_numFreeSpaces--;
+				freeSpaces--;
 			}
 			catch (string msg) {
 				_winner = otherPlayer;
