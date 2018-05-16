@@ -9,6 +9,7 @@ class Coordinate;
 
 class TicTacToe {
 private:
+	int _numFreeSpaces;
 	Board _board;
 	Player* _winner;
 

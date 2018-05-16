@@ -8,7 +8,7 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe(int size) : _board(size), _winner(nullptr) {}
+TicTacToe::TicTacToe(int size) : _numFreeSpaces(size*size), _board(size), _winner(nullptr){}
 
 const Board& TicTacToe::board() const{
 	return _board;
@@ -67,7 +67,6 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 	Xplayer.setChar('X');
 	Oplayer.setChar('O');
 	Player* otherPlayer = &Oplayer;
-	Coordinate lastCoordinate{-1, -1};
 	vector<Player*> players;
 	players.push_back(&Xplayer);
 	players.push_back(&Oplayer);
@@ -76,12 +75,12 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 			try {
 				char currPlayerChar = player->getChar();
 				Coordinate coordinate = player->play(_board);
-				if (_board[coordinate] != '.') {
-					_winner = otherPlayer;
+				if (_numFreeSpaces == 0) {
+					_winner = &Oplayer;
 					return;
 				}
-				if (coordinate == lastCoordinate) {
-					_winner = &Oplayer;
+				if (_board[coordinate] != '.') {
+					_winner = otherPlayer;
 					return;
 				}
 				_board[coordinate] = currPlayerChar;
@@ -90,7 +89,7 @@ void TicTacToe::play(Player& Xplayer, Player& Oplayer) {
 					return;
 				}
 				otherPlayer = player;
-				lastCoordinate = coordinate;
+				_numFreeSpaces--;
 			}
 			catch (string msg) {
 				_winner = otherPlayer;
